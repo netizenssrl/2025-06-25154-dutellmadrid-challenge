@@ -56,12 +56,13 @@ async function postLoginAction() {
     teams = response.data;
     initSocket();
     initTimer();
-    if (participant.team) {
+   /*  if (participant.team) {
         $(".team-name").text(participant.team.sName);
     } else {
         $(".team-name").html("<br />");
-    }
-    $("#team-name").text(participant.team.sName);
+    } */
+    $(".team-name").text(participant.team.sName);
+    $(".team-name").css("color", participant.team.sColor);
 }
 
 function getLocalStorage() {

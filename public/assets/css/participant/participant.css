@@ -28,6 +28,7 @@ p, input, button, a{
 .bg-main {
     background-image: url("../../img/participant/bg-main.png");
     background-size: 100% 100%;
+    border-bottom: 8px solid #1D2D44;
 }
 
 .app-section{
@@ -49,7 +50,7 @@ p, input, button, a{
     @apply hidden text-sm text-primary;
 }
 
-#container-team-name {
+.container-team-name {
     background-image: url("../../img/participant/team-name.png");
     background-size: 100% 100%;
 }
@@ -104,7 +105,7 @@ p, input, button, a{
     @apply border-white border-[1px] rounded-md p-2 leading-tight text-xs;
 }
 .timer-box{
-    @apply absolute top-3 right-3 text-lg text-secondary p-2 transition-all leading-none opacity-100 flex justify-center items-center;
+    @apply absolute top-6 right-4 text-lg text-secondary p-2 transition-all leading-none opacity-100 flex justify-center items-center;
     transition: all .3s ease-in-out;
 }
 .timer-box.finished{
@@ -118,7 +119,7 @@ p, input, button, a{
     animation: blink ease-in-out 2s infinite;
 }
 .question-box-container{
-    @apply relative flex flex-col py-2 px-12 my-4 -mx-7;
+    @apply relative flex flex-col py-3 px-12 my-4 -mx-7;
     background-image: url("../../img/participant/question-box.png");
     background-size: 100% 100%;
 }
@@ -222,7 +223,7 @@ p, input, button, a{
     box-shadow: 0 0 11px 4px #84c8bb
 }
 #question-section.correct-answers .answer-choice[bCorrect="true"] .answer-choice-inner{
-    @apply bg-secondary border-white font-bold;
+    @apply bg-primary border-white font-bold;
 }
 
 #question-section.correct-answers .answer-choice[bCorrect="false"].selected {

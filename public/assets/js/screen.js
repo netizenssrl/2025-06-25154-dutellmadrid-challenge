@@ -231,7 +231,7 @@ async function loadTeamsRanking(bFinalRanking) {
             <div class="ranking-element ${maxScore === team.iScore ? "ranking-first" : ""}">
                 <div class="ranking-element-inner ${maxScore === team.iScore ? "ranking-first-inner" : ""}">
                     <p class="ranking-label">Team</p>
-                    <p class="ranking-team-name">${team.sName}</p>
+                    <p class="ranking-team-name" style="color: ${team.sColor}">${team.sName}</p>
                     <div class="ranking-border"></div>
                     <p class="ranking-label">Score</p>
                     <p class="ranking-score">${team.iScore}</p>
@@ -283,7 +283,7 @@ function loadTeamScores(teamResult = null, bShowPoints = false) {
                 <div class="container-team-results">
                     <p>CORRECT ANSWERS</p>
                     <div class="team-results">
-                        <div class="progress-bar" style="width: ${teamPercentage}%;">
+                        <div class="progress-bar" style="width: ${teamPercentage}%; background-color: ${team.sColor};">
                             <p>${teamPercentage}%</p>
                         </div>
                     </div>
@@ -292,7 +292,7 @@ function loadTeamScores(teamResult = null, bShowPoints = false) {
                     <p class="label-team-name">
                         Team
                     </p>
-                    <p class="team-name">
+                    <p class="team-name font-bold" style="color: ${team.sColor}">
                         ${team.sName}
                     </p>
                     <p class="team-score ${maxScore === teamScore ? "team-first" : ""}">
