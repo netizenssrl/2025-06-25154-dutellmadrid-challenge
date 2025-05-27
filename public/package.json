@@ -1,0 +1,20 @@
+{
+  "name": "dutell",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "dev:participant": "npx tailwindcss -i ./assets/css/participant/participant.css -o ./assets/css/participant/participant.min.css --minify --watch",
+    "dev:screen": "npx tailwindcss -i ./assets/css/screen/screen.css -o ./assets/css/screen/screen.min.css --minify --watch",
+    "dev": "concurrently \"npm run dev:participant\" \"npm run dev:screen\"",
+    "build:participant": "npx tailwindcss -i ./assets/css/participant/participant.css -o ./assets/css/participant/participant.min.css --minify",
+    "build:screen": "npx tailwindcss -i ./assets/css/screen/screen.css -o ./assets/css/screen/screen.min.css --minify",
+    "build": "npm run && npm run build:participant && npm run build:screen"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^3.4.16"
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+        <meta name="apple-mobile-web-app-title" content="Screen | Connessi al futuro">
+
+        <link rel="stylesheet" href="assets/fonts/fonts.css">
+        <link rel="stylesheet" href="assets/css/screen/screen.min.css">
+        <script src="assets/js/socket.io.min.js"></script>
+        <script src="assets/js/easytimer.min.js"></script>
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="assets/js/axios/axios.min.js"></script>
+        <script src="assets/js/screen.js"></script>
+
+        <title>Screen | Dutell Academy</title>
+    </head>
+
+    <body room="" class="muted">
+        <section class="app-section bg-cover" id="cover-section">
+        </section>
+        <section class="app-section bg-question" id="question-section">
+            <header class="relative w-full h-fit">
+                <img src="assets/img/screen/header-question.png">
+
+                <div class="absolute top-1/2 -translate-y-[calc(50%+theme(spacing.6))] right-20 justify-end flex">
+                    <div class="timer-box">
+                        <img src="assets/img/timer_icon.png" class="w-16 aspect-square">
+                        <p class="text-primary font-bold w-[135px]">
+                            <span class="minutes">00</span>:<span class="seconds">00</span>
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <main class="container">
+                <div class="qa-container flex flex-col !px-12 mt-5">
+                    <div id="container-team-scores" class="w-full flex"></div>
+
+                    <div class="relative my-7">
+                        <div class="question-box-container">
+                            <div class="question-box-container-inner">
+                                <p class="text-center question-text-number text-4xl font-black mb-3"></p>
+                                <div class="w-full flex flex-grow items-center question-text-container">
+                                    <p class="w-full text-center question-text text-2xl text-gray-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="answer-box-container">
+                    </div>
+                </div>
+            </main>
+        </section>
+        <section class="app-section bg-main" id="ranking-section">
+            <img src="assets/img/screen/header-ranking.png">
+
+            <main class="container mt-5">
+                <div id="container-ranking" class="w-full flex justify-between !px-12 mt-5">
+                </div>
+            </main>
+        </section>
+    </body>
+</html>

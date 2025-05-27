@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#4B7DA0">
+    <meta name="apple-mobile-web-app-title" content="Connessi al futuro">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/participant/participant.min.css">
+    <script src="assets/js/socket.io.min.js"></script>
+    <script src="assets/js/easytimer.min.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/axios/axios.min.js"></script>
+    <script src="assets/js/participant.js"></script>
+
+    <title>Dutell Academy</title>
+</head>
+<body class="max-w-3xl mx-auto">
+<main class="flex flex-col w-full h-full relative bg-main">
+    <div class="relative w-full h-[calc(100%-theme(spacing.10))]">
+        <section class="app-section" id="home-section">
+            <img src="assets/img/participant/header_home.png" class="w-full h-auto">
+
+            <p class="font-bold text-3xl text-gray-text text-center mt-10">
+                You are part of
+            </p>
+
+            <div class="relative w-full h-fit flex justify-center mt-5">
+                <div id="container-team-name" class="z-10 w-5/6 h-full flex flex-col justify-center items-center text-primary p-3">
+                    <p class="text-2xl">
+                        Team
+                    </p>
+                    <p id="team-name" class="text-5xl font-bold tracking-tight mt-3"></p>
+                </div>
+            </div>
+        </section>
+        <section class="app-section" id="question-section">
+            <div class="relative flex flex-col h-full">
+                <img src="assets/img/participant/header_question.png" class="w-full h-auto">
+
+                <div class="timer-box">
+                    <img src="assets/img/timer_icon.png" class="w-8 aspect-square mr-1">
+                    <p class="text-xl font-bold text-primary w-16">
+                        <span class="minutes">00</span>:<span class="seconds">00</span>
+                    </p>
+                </div>
+
+                <div class="qa-container">
+                    <div class="container overflow-x-hidden !px-4">
+                        <div class="question-box-container">
+                            <p class="text-center question-text-number font-black"></p>
+                            <p class="text-center question-text text-gray-text leading-tight"></p>
+                        </div>
+                        <div class="answer-box-container mb-4">
+                        </div>
+                        <button class="btn-secondary disabled mx-auto table" id="btn-vote"><span>SEND</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="survey-section" class="app-section">
+            <img src="assets/img/participant/header_home.png" class="w-full h-auto">
+
+            <p>
+                Thank you<br>
+                for your<br>
+                participation!
+            </p>
+            <p>
+                Please submit your feedback<br>
+                at the link below
+            </p>
+
+            <a id="survey-link" class="block underline underline-offset-2" target="_blank">Share your feedback</a>
+        </section>
+    </div>
+
+    <div class="w-full flex justify-center my-4">
+        <img src="assets/img/participant/logo.png" class="w-1/2 h-auto">
+    </div>
+</main>
+
+</body>
+</html>

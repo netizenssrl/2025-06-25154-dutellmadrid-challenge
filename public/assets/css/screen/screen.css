@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes bounce {
+    0%{ transform: scale(1);}
+    50%{ transform: scale(1.2); }
+    100%{ transform: scale(1); }
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+body{
+    @apply relative w-[1920px] h-[1080px] overflow-hidden;
+    font-family: Gotham, sans-serif;
+    color: #575E61;
+}
+body:after{
+    content: "";
+    @apply absolute left-0 right-0 top-0 bottom-0 bg-no-repeat bg-center opacity-0 pointer-events-none z-50 transition-all bg-black bg-opacity-70 origin-center;
+    background-image: url("../../img/screen/tap-icon.png");
+    background-size: 80px auto;
+}
+body.muted:after{
+    @apply opacity-100 cursor-pointer;
+    pointer-events: all;
+    animation: bounce 1s infinite;
+
+}
+.room-name{
+    @apply opacity-0;
+}
+body:not([room=""]) .room-name{
+    @apply opacity-100;
+}
+.app-section{
+    @apply hidden flex-col absolute inset-0 bg-cover bg-center bg-no-repeat;
+}
+#cover-section {
+
+    @apply flex;
+}
+
+/* ###############################################################################
+################################# QUESTION #######################################
+############################################################################### */
+.timer-box{
+    @apply flex items-center text-white border-white border-[3px] rounded-xl text-5xl font-normal py-5 px-6 transition-all leading-none opacity-100 space-x-5;
+    transition: all .3s ease-in-out;
+}
+.timer-box.finished p,
+.timer-box.finished span{
+    @apply text-red-800;
+}
+.timer-box.finished span{
+    animation: blink ease-in-out 2s infinite;
+}
+.question-box-container{
+    @apply h-full flex flex-col bg-primary p-1;
+    clip-path: polygon(4% 0, 96% 0%, 100% 50%, 96% 100%, 4% 100%, 0% 50%);
+}
+.question-box-container-inner {
+    @apply w-full h-full flex flex-col bg-white px-20 py-5;
+    clip-path: polygon(3.9% 0, 96.1% 0%, 100% 50%, 96.1% 100%, 3.9% 100%, 0% 50%);
+}
+.question-text-container{
+    @apply min-h-[110px];
+}
+.answer-box-container{
+    @apply w-[92%] flex flex-wrap self-center justify-center items-center gap-x-7 gap-y-7;
+}
+.answer-choice{
+    @apply w-[49.1%] h-32 flex items-center bg-white border-4 border-primary py-4 leading-tight;
+}
+
+.answer-letter{
+    @apply w-24 h-full flex justify-center items-center text-primary text-4xl text-center leading-none font-black border-r-2 border-r-primary;
+}
+.answer-text-box{
+    @apply w-full h-full text-xl px-6 flex items-center leading-tight;
+    transition: all .3s ease-in-out;
+}
+.answer-choice.bigger .answer-text-box{
+    @apply text-3xl;
+}
+.percentage-ring-container{
+    @apply absolute table my-auto top-0 bottom-0 -right-[50px] bg-white rounded-full w-[104px] h-[104px] p-2 opacity-0;
+    transition: opacity .3s ease-in-out
+}
+.percentage-ring{
+    @apply relative bg-grey rounded-full w-full h-full block p-2;
+}
+.percentage-ring-fill{
+    @apply absolute top-0 left-0 right-0 bottom-0 rounded-full block bg-grey;
+    background: conic-gradient(#ef454d calc(75 * 360 / 100)deg, transparent 0deg 360deg);
+}
+.percentage-ring-container .percentage{
+    @apply relative text-primary bg-white rounded-full text-[25px] w-full h-full flex items-center justify-center;
+}
+
+.bg-main{
+    background-image: url("../../img/screen/bg-main.png");
+}
+
+.bg-question{
+    background-image: url("../../img/screen/bg-question.png");
+}
+
+.bg-cover {
+    background-image: url("../../img/screen/bg-cover.png");
+}
+
+#container-team-scores > div {
+    @apply flex flex-col items-center w-1/6 h-fit;
+}
+
+.container-team-results {
+    @apply flex flex-col w-4/5 opacity-0;
+}
+
+.container-team-results > p {
+    @apply text-white font-bold;
+}
+
+.team-results {
+    @apply w-full h-8 bg-gray-team-results;
+}
+
+.team-results > .progress-bar {
+    @apply h-full flex items-center bg-secondary max-w-[0];
+    transition: all .3s ease-in-out;
+}
+
+.team-results > .progress-bar p{
+    @apply text-primary text-xl font-bold ms-2 hidden;
+}
+.team-results > .progress-bar.animate{
+    @apply max-w-full;
+}
+.team-results > .progress-bar.animate p{
+    @apply block;
+}
+
+.team-first.animate-pulse{
+    animation: pulse 1s ease-in-out 1 forwards;
+}
+
+.container-team-score {
+    @apply relative w-full flex flex-col items-center text-white font-bold bg-primary px-5 py-3 mt-5;
+}
+
+.container-team-score.team-1::after,
+.container-team-score.team-2::after,
+.container-team-score.team-3::after,
+.container-team-score.team-4::after,
+.container-team-score.team-5::after {
+    content: "";
+    @apply absolute top-1/2 right-0 -translate-y-1/2 w-[1px] h-2/3 bg-white;
+}
+
+.label-team-name {
+    @apply font-normal text-2xl;
+}
+
+.team-name {
+    @apply text-4xl;
+}
+
+.team-score {
+    @apply text-6xl text-transparent font-black;
+    -webkit-text-stroke: 3px white;
+}
+
+
+/* ###############################################################################
+################################ CORRECT ANSWERS #################################
+############################################################################### */
+#question-section .question-text-number{
+    @apply text-primary;
+}
+#question-section .question-text-number[area="DUPIXENT"]{
+    @apply text-dupixent;
+}
+#question-section .question-text-number[area="COPD+Asthma"]{
+    @apply text-copd_asthma;
+}
+#question-section .question-text-number[area="COPD"]{
+    @apply text-copd;
+}
+#question-section .question-text-number[area="ASTHMA"]{
+    @apply text-asthma;
+}
+#question-section .question-text-number[area="CRSwNP"]{
+    @apply text-CRSwNP;
+}
+
+#question-section.correct-answers .answer-choice[bCorrect="true"]{
+    @apply border-white;
+    background: linear-gradient(90deg,rgba(75, 125, 160, 1) 0%, rgba(132, 200, 187, 1) 100%);
+    box-shadow: 0 0 17px 8px #ffffff;
+}
+#question-section.correct-answers.animate .answer-choice[bCorrect="true"]{
+    animation: blink ease-in-out 1s forwards 2;
+}
+
+#question-section.correct-answers .answer-choice[bCorrect="true"] p {
+    @apply text-white font-bold;
+}
+
+#question-section.correct-answers .answer-choice[bCorrect="true"] .answer-letter{
+    @apply border-white;
+}
+#question-section.correct-answers .timer-box{
+    @apply opacity-0;
+}
+
+/* ###############################################################################
+################################# RESULTS ########################################
+############################################################################### */
+#question-section.results .container-team-results{
+    @apply opacity-100;
+}
+
+/* ###############################################################################
+################################ RANKING  ########################################
+############################################################################### */
+.ranking-element {
+    @apply w-[15%] bg-primary text-white border-2 border-primary transition-opacity duration-500;
+}
+
+.ranking-element-inner {
+    @apply flex flex-col items-center w-full h-full px-5 py-10;
+}
+
+.ranking-label {
+    @apply text-3xl;
+}
+
+.ranking-team-name {
+    @apply text-5xl font-black mt-3;
+}
+
+.ranking-border {
+    @apply w-full h-[1px] bg-white my-12;
+}
+
+.ranking-score {
+    @apply text-7xl font-black text-transparent mt-3;
+    -webkit-text-stroke: 3px white;
+}
+
+.ranking-first.animate-pulse {
+    @apply border-white;
+    background: linear-gradient(135deg,rgba(75, 125, 160, 1) 0%, rgba(132, 200, 187, 1) 100%);
+    box-shadow: 0 0 17px 8px #ffffff;
+    animation: pulse 2s ease-in-out 3 forwards;
+}
+
+.ranking-first-inner {
+    @apply mix-blend-hard-light;
+    background: linear-gradient(135deg,rgba(75, 125, 160, 1) 0%, rgba(132, 200, 187, 1) 100%);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+}

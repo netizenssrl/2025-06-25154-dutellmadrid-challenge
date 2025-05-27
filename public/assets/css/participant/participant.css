@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes bounce {
+    0%{ transform: scale(1);}
+    50%{ transform: scale(1.2); }
+    100%{ transform: scale(1); }
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+*{
+    @apply touch-pan-x touch-pan-y;
+}
+body{
+    @apply relative bg-cover h-dvh flex flex-col overflow-hidden;
+    font-family: Gotham, sans-serif;
+}
+p, input, button, a{
+    @apply select-none;
+}
+/*#############################################################################
+################################# HEADER #######################################
+############################################################################# */
+
+.bg-main {
+    background-image: url("../../img/participant/bg-main.png");
+    background-size: 100% 100%;
+}
+
+.app-section{
+    @apply hidden absolute h-full flex-col w-full overflow-y-auto;
+}
+.menarini-logo{
+    @apply h-full w-auto p-2;
+}
+.btn-primary{
+    @apply bg-primary font-bold text-white rounded-lg text-xl md:text-3xl py-3 px-4;
+}
+.btn-primary.disabled, .btn-secondary.disabled{
+    @apply opacity-50 pointer-events-none;
+}
+.btn-secondary{
+    @apply bg-primary text-white text-2xl font-black py-2 px-6;
+}
+.error-text{
+    @apply hidden text-sm text-primary;
+}
+
+#container-team-name {
+    background-image: url("../../img/participant/team-name.png");
+    background-size: 100% 100%;
+}
+
+/* #############################################################################
+######################## MODAL PROGRAMMA & TWEETS ##############################
+############################################################################# */
+.modal{
+    @apply hidden fixed z-40 top-0 left-0 w-full h-full bg-black bg-opacity-50;
+}
+.modal-content{
+    @apply relative lg:container;
+    width: calc(100% - 60px);
+    height: calc(100% - 90px);
+}
+.modal-scroller{
+    @apply w-full h-full overflow-y-auto rounded-lg;
+}
+.tweets-container-outer{
+    @apply hidden absolute top-0 left-0 right-0 bottom-0 flex-col px-3 py-8;
+}
+.tweets-container{
+    @apply bg-white rounded-lg h-full overflow-y-auto;
+}
+.tweets-container .tweet{
+    @apply border-b-[1px] border-solid border-secondary py-3 text-secondary leading-[1.1] text-sm;
+}
+.tweets-container .tweet:last-child{
+    @apply border-0;
+}
+#btn-open-new-tweet{
+    @apply text-sm md:text-xl;
+}
+#tweet-textarea{
+    @apply w-full rounded-lg p-3 text-secondary leading-[1.1] text-sm outline-none border-[1px] border-transparent transition-colors;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+#tweet-textarea:focus{
+    @apply outline-none border-secondary;
+}
+#btn-send-new-tweet{
+    @apply min-w-[75%];
+}
+
+/* ###############################################################################
+################################# QUESTION #######################################
+############################################################################### */
+.qa-container{
+    @apply flex-1 overflow-auto pb-4 mt-2;
+}
+.team-box{
+    @apply border-white border-[1px] rounded-md p-2 leading-tight text-xs;
+}
+.timer-box{
+    @apply absolute top-3 right-3 text-lg text-secondary p-2 transition-all leading-none opacity-100 flex justify-center items-center;
+    transition: all .3s ease-in-out;
+}
+.timer-box.finished{
+    @apply border-primary;
+}
+.timer-box.finished p,
+.timer-box.finished span{
+    @apply text-primary;
+}
+.timer-box.finished span{
+    animation: blink ease-in-out 2s infinite;
+}
+.question-box-container{
+    @apply relative flex flex-col py-2 px-12 my-4 -mx-7;
+    background-image: url("../../img/participant/question-box.png");
+    background-size: 100% 100%;
+}
+.answer-box-container{
+    @apply flex flex-col gap-4;
+}
+.answer-choice-inner{
+    @apply relative min-h-14 flex items-center bg-white border-primary border py-2;
+}
+.answer-letter{
+    @apply text-primary text-center w-10 border-r border-primary font-bold;
+}
+.answer-text-box{
+    @apply text-gray-text px-4 flex flex-1 items-center transition-all leading-tight;
+}
+.answer-choice.selected{
+    box-shadow: 0 0 11px 1px #4b7da0;
+}
+.answer-choice.selected .answer-choice-inner{
+    @apply bg-primary font-bold border-2 border-white;
+}
+.answer-choice.selected .answer-letter, #question-section.correct-answers .answer-choice[bCorrect="true"] .answer-letter{
+    @apply text-white font-bold border-white;
+}
+.answer-choice.selected .answer-text-box, #question-section.correct-answers .answer-choice[bCorrect="true"] .answer-text-box{
+    @apply text-white font-bold;
+}
+
+.box-team-score {
+    @apply w-1/3 flex flex-col p-2;
+}
+.box-team-score.current-team{
+    @apply bg-secondary;
+}
+
+.team-title {
+    @apply text-xs;
+}
+
+.team-name {
+    @apply font-bold;
+}
+
+.team-score {
+    @apply text-3xl font-bold text-transparent;
+    -webkit-text-stroke: 2px white;
+}
+
+.container-correct-answers {
+    @apply w-5/6 self-center;
+}
+
+.correct-answers-percentage {
+    @apply bg-white w-full;
+}
+
+.correct-answers-percentage > div {
+    @apply flex items-center h-full bg-secondary;
+}
+
+.correct-answers-percentage > div > p {
+    @apply text-xs text-start text-primary font-bold ps-1 py-0.5;
+}
+.box-team-score.current-team .correct-answers-percentage > div{
+    @apply bg-primary;
+}
+.box-team-score.current-team .correct-answers-percentage > div > p {
+    @apply text-secondary;
+}
+.team-percentage {
+    @apply text-[0.5rem] text-start font-bold truncate;
+}
+
+/* ###############################################################################
+################################ CORRECT ANSWERS #################################
+############################################################################### */
+#question-section .question-text-number{
+    @apply text-primary;
+}
+#question-section .question-text-number[area="DUPIXENT"]{
+    @apply text-dupixent;
+}
+#question-section .question-text-number[area="COPD+Asthma"]{
+    @apply text-copd_asthma;
+}
+#question-section .question-text-number[area="COPD"]{
+    @apply text-copd;
+}
+#question-section .question-text-number[area="ASTHMA"]{
+    @apply text-asthma;
+}
+#question-section .question-text-number[area="CRSwNP"]{
+    @apply text-CRSwNP;
+}
+
+#question-section.correct-answers .timer-box{
+    @apply opacity-0;
+}
+
+#question-section.correct-answers .answer-choice[bCorrect="true"] {
+    box-shadow: 0 0 11px 4px #84c8bb
+}
+#question-section.correct-answers .answer-choice[bCorrect="true"] .answer-choice-inner{
+    @apply bg-secondary border-white font-bold;
+}
+
+#question-section.correct-answers .answer-choice[bCorrect="false"].selected {
+    box-shadow: 0 0 11px 1px #dc2626;
+}
+#question-section.correct-answers .answer-choice[bCorrect="false"].selected .answer-choice-inner{
+    @apply bg-red-600 border-white font-bold;
+}
+
+/* ###############################################################################
+################################# SURVEY ########################################
+############################################################################### */
+
+#survey-section {
+    @apply font-bold text-2xl text-white text-center space-y-10;
+}
