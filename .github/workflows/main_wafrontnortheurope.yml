@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x' # Consigliata per Next.js, evita 22.x per ora
+          node-version: '22.x' # Consigliata per Next.js, evita 22.x per ora
 
       - name: Install dependencies
         run: npm install
