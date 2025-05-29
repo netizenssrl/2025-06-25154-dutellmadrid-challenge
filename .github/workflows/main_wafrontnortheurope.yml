@@ -26,10 +26,6 @@ jobs:
       - name: Build the Next.js app
         run: npm run build
 
-      - name: Export Next.js static output (solo se usi static export)
-        run: npm run export
-        if: exists('out') # Questo comando è valido solo se usi `next export`
-
       - name: Prepare artifact for deployment
         run: |
           mkdir deploy
