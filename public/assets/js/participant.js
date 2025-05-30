@@ -168,6 +168,7 @@ async function setStatus(status) {
         case "Final Ranking Teams":
             $(".app-section").not("#home-section").hide();
             $("#home-section").fadeIn(150).css("display", "flex");
+            $("footer").show();
             break;
         case "Question":
             appStatus.bVoted = false;
@@ -274,6 +275,7 @@ function stopTimer() {
 
 async function loadQuestion(question, bVoteEnabled) {
     $("#question-section").removeClass("correct-answers");
+    $("footer").hide();
 
     if (question.iFrontEndOrder === 0) {
         $("#question-section .question-text-number").text("TEST QUESTION");
@@ -285,6 +287,12 @@ async function loadQuestion(question, bVoteEnabled) {
     if (!appStatus.bVoted) {
         const answers = question.answers;
         let answersHtml = "";
+        if( question.eType === "IMAGE") {
+            answersHtml += `<div>`;
+                answersHtml += `<img src="assets/img/questions/question-${question.id}.jpg" class="question-image" />`;
+                answersHtml += `<p class="footer-notes text-center">${question.sFooterNotes}</p>`;
+            answersHtml += `</div>`;
+        }
         for (const answer of answers) {
             answersHtml += `
                 <div class="answer-choice ${answer.sAdditionalClasses ? answer.sAdditionalClasses : ""}" bCorrect="${answer.bCorrect}" answerId="${answer.id}">
@@ -311,8 +319,6 @@ async function loadQuestion(question, bVoteEnabled) {
         } else {
             $("#btn-vote").addClass("disabled");
         }
-    } else {
-
     }
 }
 

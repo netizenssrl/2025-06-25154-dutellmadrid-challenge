@@ -115,7 +115,7 @@ p, input, button, a{
 ################################# QUESTION #######################################
 ############################################################################### */
 .qa-container{
-    @apply flex-1 overflow-auto pb-4 mt-2;
+    @apply flex-1 overflow-auto pb-4;
 }
 .team-box{
     @apply border-white border-[1px] rounded-md p-2 leading-tight text-xs;
@@ -135,7 +135,7 @@ p, input, button, a{
     animation: blink ease-in-out 2s infinite;
 }
 .question-box-container{
-    @apply relative flex flex-col py-3 px-12 my-4 -mx-7;
+    @apply relative flex flex-col py-3 px-12 -mx-7 mb-3;
     background-image: url("../../img/participant/question-box.png");
     background-size: 100% 100%;
 }
@@ -208,6 +208,16 @@ p, input, button, a{
 .team-percentage {
     @apply text-[0.5rem] text-start font-bold truncate;
 }
+.question-image{
+    @apply mb-2;
+}
+.question-image, .footer-notes{
+    @apply w-full max-w-[70%] mx-auto;
+}
+.footer-notes{
+    @apply text-[0.5rem];
+}
+
 
 /* ###############################################################################
 ################################ CORRECT ANSWERS #################################

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `questions` MODIFY `eType` ENUM('SINGLE_CHOICE', 'IMAGE', 'MULTIPLE_CHOICE', 'TEXT') NOT NULL;

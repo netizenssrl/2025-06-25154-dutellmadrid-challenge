@@ -200,6 +200,16 @@ async function loadQuestion(question, bShowResults, playAudio) {
     $("#question-section .question-text").html(question.sText);
     const answers = question.answers;
     let answersHtml = "";
+    $("#question-section").attr("type", question.eType);
+    if( question.eType === "IMAGE") {
+        answersHtml += `<div class="w-1/4">`;
+            answersHtml += `<img src="assets/img/questions/question-${question.id}.jpg" class="question-image" />`;
+            answersHtml += `<p class="footer-notes text-center">${question.sFooterNotes}</p>`;
+        answersHtml += `</div>`;
+        answersHtml += `<div class="flex-1">`;
+            answersHtml += `<p class="question-text">${question.sText}</p>`;
+            answersHtml += `<div class="flex-answers" nanswers="${answers.length}">`;
+    }
     for (answer of answers) {
         answersHtml += `
             <div class="answer-choice ${answer.sAdditionalClasses ? answer.sAdditionalClasses : ""}" bCorrect="${answer.bCorrect}">
@@ -212,6 +222,10 @@ async function loadQuestion(question, bShowResults, playAudio) {
                 </div>
             </div>
         `;
+    }
+    if( question.eType === "IMAGE") {
+            answersHtml += `</div>`;
+        answersHtml += `</div>`;
     }
     $("#question-section .answer-box-container").html(answersHtml);
     if(bShowResults){

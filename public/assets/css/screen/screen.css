@@ -57,7 +57,7 @@ body:not([room=""]) .room-name{
     animation: blink ease-in-out 2s infinite;
 }
 .question-box-container{
-    @apply relative h-full flex flex-col px-1 pb-[10px];
+    @apply relative h-full flex flex-col px-1;
     /* clip-path: polygon(4% 0, 96% 0%, 100% 50%, 96% 100%, 4% 100%, 0% 50%); */
 }
 .question-box-container:before, .question-box-container:after{
@@ -181,13 +181,60 @@ body:not([room=""]) .room-name{
     @apply text-6xl text-white font-bold;
     -webkit-text-stroke: 3px #575E61;
 }
-
-
+.question-box-container-outer{
+    @apply relative my-7;
+}
+#question-section[type="IMAGE"] .question-box-container-outer{
+    @apply mt-3 mb-5;
+}
+#question-section[type="IMAGE"] .question-box-container{
+    @apply w-full max-w-[50%] mx-auto;
+}
+#question-section[type="IMAGE"] .question-box-container:before{
+    left: -40px;
+}
+#question-section[type="IMAGE"] .question-box-container:after{
+    right: -40px;
+}
+#question-section[type="IMAGE"] .question-text-container {
+    @apply hidden;
+}
+#question-section[type="IMAGE"] .question-text-number{
+    @apply mb-0;
+}
+#question-section[type="IMAGE"]:before{
+    content: "";
+    background-color: rgba(255,255,255,0.5);
+    mix-blend-mode: overlay;
+    @apply absolute bottom-0 left-0 right-0;
+    height: calc(50% - 0.9rem);
+}
+#question-section[type="IMAGE"] .answer-box-container{
+    @apply w-[90%] flex flex-wrap self-center justify-center items-start gap-x-7 gap-y-7;
+}
+#question-section[type="IMAGE"] .question-text{
+    @apply text-3xl text-gray-text font-bold mb-8;
+}
+.footer-notes{
+    @apply text-sm text-gray-text;
+}
+.flex-answers{
+    @apply flex flex-row flex-wrap gap-8;
+}
+.flex-answers .answer-choice{
+    @apply h-28;
+}
+.flex-answers[nanswers="4"] .answer-choice{
+    width: calc(50% - 1rem);
+}
+.flex-answers[nanswers="5"] .answer-choice{
+    width: calc(33.33% - 1.5rem);
+}
 /* ###############################################################################
 ################################ CORRECT ANSWERS #################################
 ############################################################################### */
 #question-section .question-text-number{
-    @apply text-primary;
+    @apply text-primary mb-3;
 }
 #question-section .question-text-number[area="DUPIXENT"]{
     @apply text-dupixent;

@@ -33,8 +33,14 @@ export default function QuestionsSection({selectedTargets}) {
                                         title={
                                             <div className="flex flex-row gap-2 items-center">
                                                 <p className="font-semibold text-2xl text-primary">{`Question ${question.iFrontEndOrder}`}</p>
-                                                <p className="text-primary">-</p>
-                                                <p className="text-md font-semibold text-primary">{`${question.sSessionNotes}`}</p>
+                                                {
+                                                    question.sSessionNotes && (
+                                                        <>
+                                                            <p className="text-md font-semibold text-primary">-</p>
+                                                            <p className="text-md font-semibold text-primary">{`${question.sSessionNotes}`}</p>
+                                                        </>
+                                                    )
+                                                }
                                             </div>
                                         }
                                         textValue={`Question ${question.id}`}

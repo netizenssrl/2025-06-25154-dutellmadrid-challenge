@@ -44,5 +44,9 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: [
+    "w-1/4",
+    "flex-1"
+  ]
 }
 
